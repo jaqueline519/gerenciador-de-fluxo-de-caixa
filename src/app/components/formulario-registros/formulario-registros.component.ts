@@ -4,8 +4,8 @@ import { Registro } from 'src/app/models/registros.model';
 import { Form } from 'src/app/types/form.type';
 import { RegistrosFinanceirosService } from '../../services/registros-financeiros.service';
 import { v4 as uuidv4 } from 'uuid';
-import { MesesDoAno } from 'src/app/types/meses-do-ano.type';
 import { meses } from 'src/app/dictionary/meses-do-ano.dictionary';
+import { MesesDoAno } from 'src/app/types/meses-do-ano.type';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class FormularioRegistrosComponent implements OnInit, OnChanges {
   registroForm: FormGroup = new FormGroup({});
   @Input() registro: Registro = {id: ''};
   @Input() typeSubmit: Form = 'salvar';
-  @Output() submitFormEvent = new EventEmitter<MesesDoAno>();
+  @Output() submitFormEvent = new EventEmitter<string>();
   constructor(private formBuilder: FormBuilder, private registrosFinanceirosService: RegistrosFinanceirosService) { }
 
 
@@ -53,13 +53,13 @@ export class FormularioRegistrosComponent implements OnInit, OnChanges {
     })
   }
 
-
-  extrairNomeMes(data: string) {
+  extrairMesAno(data: string): string {
     const dataObj = new Date(data);
     const mesIndex = dataObj.getMonth();
-    return meses[mesIndex];
-  }
-
+    const ano: number = dataObj.getFullYear();
+    const nomeMes: MesesDoAno = meses[mesIndex];
+    return `${nomeMes}/${ano}`;
+}
   
 
   submitForm() {
@@ -69,7 +69,7 @@ export class FormularioRegistrosComponent implements OnInit, OnChanges {
       this.atualizar();
     }
 
-    this.submitFormEvent.emit(this.extrairNomeMes(this.registroForm.get('data')?.value));
+    this.submitFormEvent.emit(this.extrairMesAno(this.registroForm.get('data')?.value));
   }
 
   salvar() {
@@ -84,14 +84,14 @@ export class FormularioRegistrosComponent implements OnInit, OnChanges {
     })
   }
 
-  retornaRegistroParaSalvar() {
+  retornaRegistroParaSalvar(): Registro {
     return {
       id: this.registroForm.get('id')?.value || uuidv4(),
       descricao: this.registroForm.get('descricao')?.value,
       tipoDeRegistro: this.registroForm.get('tipoDeRegistro')?.value,
       valor: this.registroForm.get('valor')?.value,
       data: this.registroForm.get('data')?.value,
-      mes: this.extrairNomeMes(this.registroForm.get('data')?.value)
+      mesAno: this.extrairMesAno(this.registroForm.get('data')?.value)
     }
   }
   atualizar() {

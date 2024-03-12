@@ -5,7 +5,7 @@
         <mat-card-title>Mês</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        {{ mesRegistros }}
+        {{ mesAnoRegistro }}
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>
@@ -15,7 +15,7 @@
         <mat-card-title>Entradas</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        {{ totalEntradas | currency : "BRL" }}
+        {{ totalEntradasEsaidas.entradas| currency : "BRL" }}
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>
@@ -25,7 +25,7 @@
         <mat-card-title>Saídas</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        {{ totalSaidas | currency : "BRL" }}
+        {{ totalEntradasEsaidas.saidas| currency : "BRL" }}
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>
@@ -35,7 +35,7 @@
         <mat-card-title>Saldo</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        {{ totalEntradas - totalSaidas | currency : "BRL" }}
+        {{ totalEntradasEsaidas.entradas - totalEntradasEsaidas.saidas | currency : "BRL" }}
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>

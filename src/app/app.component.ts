@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Registro } from './models/registros.model';
 import { RefreshTableService } from './services/refresh-table.service';
-import { MesesDoAno } from './types/meses-do-ano.type';
+import { EntradasSaidas } from './types/entradas-saidas.type';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,7 @@ export class AppComponent {
   registro: Registro = {id: ''}
   typeSubmit: 'salvar' | 'atualizar' = 'salvar'
   title = 'fluxo-de-caixa';
+  totalEntradasESaidas: EntradasSaidas = {entradas: 0, saidas: 0}
   
   constructor(private refreshTableService: RefreshTableService) {
     
@@ -22,13 +23,17 @@ export class AppComponent {
     this.registro = registro
   }
 
-  submitForm(mes: MesesDoAno) {
+  submitForm(mesAno: string) {
     this.typeSubmit = 'salvar'
     this.registro = {id: ''}
-    this.mesParaCarregarTabela(mes);
+    this.mesParaCarregarTabela(mesAno);
   }
 
-  mesParaCarregarTabela(mes: MesesDoAno) {
-    this.refreshTableService.emitRefreshTable(mes);
+  mesParaCarregarTabela(mesAno: string) {
+    this.refreshTableService.emitRefreshTable(mesAno);
+  }
+
+  retornaTotalEntradasESaida(entradasESaidas: EntradasSaidas) {
+    this.totalEntradasESaidas = entradasESaidas
   }
 }

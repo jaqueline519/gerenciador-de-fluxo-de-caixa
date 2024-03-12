@@ -2,8 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RegistrosFinanceirosService } from '../../services/registros-financeiros.service';
 import { Registro } from '../../models/registros.model';
 import { RefreshTableService } from 'src/app/services/refresh-table.service';
-import { DatePipe } from '@angular/common';
-import { MesesDoAno } from 'src/app/types/meses-do-ano.type';
+import { EntradasSaidas } from 'src/app/types/entradas-saidas.type';
 
 @Component({
   selector: 'app-table',
@@ -13,6 +12,7 @@ import { MesesDoAno } from 'src/app/types/meses-do-ano.type';
 export class TableComponent implements OnInit {
   
   @Output() editRegister: EventEmitter<Registro> = new EventEmitter();
+  @Output() emiteTotalEntradasESaidas: EventEmitter<EntradasSaidas> = new EventEmitter();
   registros: Registro[] = [];
   displayedColumns: string[] = ['descricao', 'entrada', 'saida', 'data', 'acoes'];
   constructor(private registrosFinanceirosService: RegistrosFinanceirosService,
@@ -23,6 +23,7 @@ export class TableComponent implements OnInit {
     this.buscarTodosOsRegistros();
     this.refreshTableService.getRefreshTable().subscribe({
       next: (response) => {
+          console.log( 'response table',response);
           this.buscarRegistrosPorMes(response);
       },
       error: (error) => {
@@ -31,16 +32,39 @@ export class TableComponent implements OnInit {
     });
   }
 
-  buscarRegistrosPorMes(mes: MesesDoAno) {
-    this.registrosFinanceirosService.buscarTodosOsRegistrosDoMes(mes).subscribe({
+  buscarRegistrosPorMes(mesAno: string) {
+    this.registrosFinanceirosService.buscarTodosOsRegistrosDoMesNoAno(mesAno).subscribe({
       next: (response: Registro[]) => {
+        const entradas = this.retornaApenasEntradas(response);
+        const saidas = this.retornaApenasSaidas(response);
+        const totalEntradas = this.somaValorTotal(entradas as number[]);
+        const totalSaidas = this.somaValorTotal(saidas as number[]);
+        this.emiteTotalEntradasESaidas.emit({
+          entradas: totalEntradas,
+          saidas: totalSaidas
+        });
         this.registros = response;
-        console.log('registro do mes',response);
       },
       error: (error: Error) => {
         console.log(error);
       }
     })
+  }
+
+  retornaApenasEntradas(registros: Registro[]) {
+    return registros.map(registro => registro.tipoDeRegistro === 'entrada' && registro.valor);
+  }
+
+  retornaApenasSaidas(registros: Registro[]) {
+    return registros.map(registro => registro.tipoDeRegistro === 'saida' && registro.valor);
+  }
+
+  somaValorTotal(valores: number[]) {
+    let total = 0;
+    valores.forEach((valor) => {
+      total += valor;
+    });
+    return total;
   }
 
   buscarTodosOsRegistros() {

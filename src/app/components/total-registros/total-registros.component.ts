@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { meses } from 'src/app/dictionary/meses-do-ano.dictionary';
+import { EntradasSaidas } from 'src/app/types/entradas-saidas.type';
 import { MesesDoAno } from 'src/app/types/meses-do-ano.type';
 
 @Component({
@@ -9,24 +10,23 @@ import { MesesDoAno } from 'src/app/types/meses-do-ano.type';
 })
 export class TotalRegistrosComponent implements OnInit {
 
-  totalEntradas: number = 0;
-  totalSaidas: number = 0;
-  @Output() mesRegistroEvent = new EventEmitter<MesesDoAno>();
-  mesRegistros: MesesDoAno = 'janeiro';
+  @Output() mesRegistroEvent = new EventEmitter<string>();
+  @Input() totalEntradasEsaidas: EntradasSaidas = {entradas: 0, saidas: 0}
+  mesAnoRegistro: string = '';
   displayedColumns: string[] = ['mes', 'entradas', 'saidas', 'saldo'];
   constructor() { }
 
   ngOnInit(): void {
-    this.mesRegistros = this.obterMesAtual();
-    this.mesRegistroEvent.emit(this.mesRegistros);
+    this.mesAnoRegistro = this.obterMesAnoAtual();
+    this.mesRegistroEvent.emit(this.mesAnoRegistro);
   }
 
-  obterMesAtual(): MesesDoAno {
-    const dataAtual = new Date();
-    console.log(dataAtual);
-    const mes = dataAtual.getMonth();
-    return meses[mes];
-  }
-  
+  obterMesAnoAtual(): string {
+    const dataObj = new Date();
+    const mesIndex = dataObj.getMonth();
+    const ano: number = dataObj.getFullYear();
+    const nomeMes: MesesDoAno = meses[mesIndex];
+    return `${nomeMes}/${ano}`;
+}
 
 }

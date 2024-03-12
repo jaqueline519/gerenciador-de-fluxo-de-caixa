@@ -1,28 +1,28 @@
 {
   "transacoes": [
     {
-      "id": "85823dd7-1a7e-4563-b9f5-84ed05d8101a",
-      "descricao": "compras",
+      "id": "022fbb1d-ed85-4944-af2e-e1c8c365c5f9",
+      "descricao": "Compras Renner",
       "tipoDeRegistro": "saida",
       "valor": 300,
-      "data": "2024-02-21T03:00:00.000Z",
-      "mes": "fevereiro"
+      "data": "2024-03-12T03:00:00.000Z",
+      "mesAno": "março/2024"
     },
     {
-      "id": "47229f5f-fd90-4f39-9bb5-f82c06449175",
-      "descricao": "recebimento aluguel",
-      "tipoDeRegistro": "entrada",
-      "valor": 5000,
-      "data": "2024-01-30T03:00:00.000Z",
-      "mes": "janeiro"
-    },
-    {
-      "id": "27c73162-a05e-409b-aca1-a6c8959889b3",
-      "descricao": "comprinhas",
+      "id": "bec6fc5b-b98a-49b8-8c5c-d017dfd8ea63",
+      "descricao": "pagamentos",
       "tipoDeRegistro": "saida",
-      "valor": 500,
-      "data": "2024-03-19T03:00:00.000Z",
-      "mes": "março"
+      "valor": 6000,
+      "data": "2024-03-11T03:00:00.000Z",
+      "mesAno": "março/2024"
+    },
+    {
+      "id": "b234cd00-dfef-45fd-8802-a8854280f8de",
+      "descricao": "Recebimento de aluguel",
+      "tipoDeRegistro": "entrada",
+      "valor": 8000,
+      "data": "2024-03-08T03:00:00.000Z",
+      "mesAno": "março/2024"
     }
   ]
 }

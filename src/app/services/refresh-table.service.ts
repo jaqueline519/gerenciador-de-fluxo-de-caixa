@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { MesesDoAno } from '../types/meses-do-ano.type';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RefreshTableService {
 
-  refreshTable$: BehaviorSubject<MesesDoAno> = new BehaviorSubject<MesesDoAno>('janeiro');
+  refreshTable$: BehaviorSubject<string> = new BehaviorSubject<string>('janeiro/2024');
   constructor() { }
 
   getRefreshTable() {
@@ -15,7 +14,7 @@ export class RefreshTableService {
   }
 
 
-  emitRefreshTable(mes: MesesDoAno) {
+  emitRefreshTable(mes: string) {
     this.refreshTable$.next(mes);
   }
 

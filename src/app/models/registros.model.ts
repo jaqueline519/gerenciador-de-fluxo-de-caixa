@@ -6,5 +6,5 @@ export interface Registro {
     tipoDeRegistro?: 'entrada' | 'saida';
     data?: string;
     valor?: number;
-    mes?: MesesDoAno;
+    mesAno?: string;
 }

@@ -23,8 +23,8 @@ export class RegistrosFinanceirosService {
     return this.http.get<Registro>(`${this.baseUrl}/transacoes/${id}`);
   }
 
-  buscarTodosOsRegistrosDoMes(mes: MesesDoAno): Observable<Registro[]> {
-    return this.http.get<Registro[]>(`${this.baseUrl}/transacoes?mes=${mes}`);
+  buscarTodosOsRegistrosDoMesNoAno(mesAno: string): Observable<Registro[]> {
+    return this.http.get<Registro[]>(`${this.baseUrl}/transacoes?mesAno=${mesAno}`);
   }
 
   adicionarRegistro(registro: Registro): Observable<Registro> {
