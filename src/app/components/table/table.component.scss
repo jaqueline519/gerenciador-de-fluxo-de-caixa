@@ -1,0 +1,38 @@
+:host ::ng-deep mat-table{
+    margin: 0 20px;
+    max-width: 100%;
+    margin: 10px;
+    min-width: 800px;
+
+    th {
+      background-color: #f0f0f0;
+      font-weight: bold;
+      padding: 10px;
+      text-align: left;
+    }
+
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+
+        
+}
+
+@media (max-width: 800px) {
+    .table-container {
+        overflow-x: scroll;
+    }
+}
+
+@media (max-width: 400px) {
+    * {
+        font-size: 11px;
+      }
+}
+
+.mat-header-cell.actions, .mat-cell.actions {
+    justify-content: center;
+}
+

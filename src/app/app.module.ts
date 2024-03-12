@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TableComponent } from './components/table/table.component';
@@ -20,16 +19,20 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HeaderComponent } from './components/header/header.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 const components = [
   TableComponent,
   TotalRegistrosComponent,
-  FormularioRegistrosComponent
+  FormularioRegistrosComponent,
+  HeaderComponent
 ]
 @NgModule({
   declarations: [
     AppComponent,
-    ...components,
+    ...components
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ const components = [
     MatCardModule,
     MatIconModule,
     MatSnackBarModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

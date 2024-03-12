@@ -17,7 +17,6 @@ export class AppComponent {
   totalEntradasESaidas: EntradasSaidas = {entradas: 0, saidas: 0}
   
   constructor(private refreshTableService: RefreshTableService, private snackbarService: SnackbarService) {
-    this.snackbarService.abrirSnackBar('teste snackbar', 'edit');
   }
     
   editRegister(registro: Registro) {
