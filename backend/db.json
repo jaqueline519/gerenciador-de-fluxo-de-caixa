@@ -1,0 +1,12 @@
+{
+  "transacoes": [
+    {
+      "id": "2025734f-e69d-4adb-8268-4fd7dc9f7a11",
+      "descricao": "Compras do mês",
+      "tipoDeRegistro": "entrada",
+      "valor": 1800,
+      "data": "28-10-2023",
+      "mes": "março"
+    }
+  ]
+}
