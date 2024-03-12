@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Registro } from './models/registros.model';
 import { RefreshTableService } from './services/refresh-table.service';
+import { MesesDoAno } from './types/meses-do-ano.type';
 
 @Component({
   selector: 'app-root',
@@ -21,9 +22,13 @@ export class AppComponent {
     this.registro = registro
   }
 
-  submitForm(event: boolean) {
+  submitForm(mes: MesesDoAno) {
     this.typeSubmit = 'salvar'
     this.registro = {id: ''}
-    this.refreshTableService.emitRefreshTable();
+    this.mesParaCarregarTabela(mes);
+  }
+
+  mesParaCarregarTabela(mes: MesesDoAno) {
+    this.refreshTableService.emitRefreshTable(mes);
   }
 }

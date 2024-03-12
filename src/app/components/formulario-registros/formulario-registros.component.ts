@@ -5,6 +5,8 @@ import { Form } from 'src/app/types/form.type';
 import { RegistrosFinanceirosService } from '../../services/registros-financeiros.service';
 import { v4 as uuidv4 } from 'uuid';
 import { MesesDoAno } from 'src/app/types/meses-do-ano.type';
+import { meses } from 'src/app/dictionary/meses-do-ano.dictionary';
+
 
 @Component({
   selector: 'app-formulario-registros',
@@ -16,7 +18,7 @@ export class FormularioRegistrosComponent implements OnInit, OnChanges {
   registroForm: FormGroup = new FormGroup({});
   @Input() registro: Registro = {id: ''};
   @Input() typeSubmit: Form = 'salvar';
-  @Output() submitFormEvent = new EventEmitter<boolean>();
+  @Output() submitFormEvent = new EventEmitter<MesesDoAno>();
   constructor(private formBuilder: FormBuilder, private registrosFinanceirosService: RegistrosFinanceirosService) { }
 
 
@@ -51,13 +53,13 @@ export class FormularioRegistrosComponent implements OnInit, OnChanges {
     })
   }
 
-  obterMesAtual(): MesesDoAno {
-    const dataAtual = new Date();
-    console.log(dataAtual);
-    const mes = dataAtual.getMonth();
-    const meses: MesesDoAno[] = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
-    return meses[mes];
+
+  extrairNomeMes(data: string) {
+    const dataObj = new Date(data);
+    const mesIndex = dataObj.getMonth();
+    return meses[mesIndex];
   }
+
   
 
   submitForm() {
@@ -67,14 +69,13 @@ export class FormularioRegistrosComponent implements OnInit, OnChanges {
       this.atualizar();
     }
 
-    this.submitFormEvent.emit(true);
+    this.submitFormEvent.emit(this.extrairNomeMes(this.registroForm.get('data')?.value));
   }
 
   salvar() {
 
     this.registrosFinanceirosService.adicionarRegistro(this.retornaRegistroParaSalvar()).subscribe({
-      next: (response) => {
-        // implementar close componente
+      next: () => {
       this.registroForm.reset();
       },
       error: (error) => {
@@ -90,13 +91,12 @@ export class FormularioRegistrosComponent implements OnInit, OnChanges {
       tipoDeRegistro: this.registroForm.get('tipoDeRegistro')?.value,
       valor: this.registroForm.get('valor')?.value,
       data: this.registroForm.get('data')?.value,
-      mes: this.obterMesAtual()
+      mes: this.extrairNomeMes(this.registroForm.get('data')?.value)
     }
   }
   atualizar() {
     this.registrosFinanceirosService.atualizarRegistro(this.retornaRegistroParaSalvar()).subscribe({
       next: (response) => {
-        // implementar close componente
       this.registroForm.reset();
         
       },

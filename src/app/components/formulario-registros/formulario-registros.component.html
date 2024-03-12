@@ -1,24 +1,35 @@
 <form [formGroup]="registroForm" (ngSubmit)="submitForm()">
   <div>
-    <label for="descricao">Descrição:</label>
-    <input type="text" id="descricao" formControlName="descricao" />
+    <mat-form-field appearance="fill">
+      <mat-label>Descrição:</mat-label>
+      <input matInput type="text" formControlName="descricao">
+    </mat-form-field>
   </div>
   <div>
-    <label for="entrada">Tipo de Registro:</label>
-    <select id="entrada" formControlName="tipoDeRegistro">
-      <option value="entrada">Entrada</option>
-      <option value="saida">Saida</option>
-    </select>
+    <mat-form-field appearance="fill">
+      <mat-label>Tipo de Registro:</mat-label>
+      <mat-select formControlName="tipoDeRegistro">
+        <mat-option value="entrada">Entrada</mat-option>
+        <mat-option value="saida">Saída</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
   <div>
-    <label for="saida">Valor:</label>
-    <input type="number" id="saida" formControlName="valor" />
+    <mat-form-field appearance="fill">
+      <mat-label>Valor:</mat-label>
+      <input matInput type="number" formControlName="valor">
+    </mat-form-field>
   </div>
   <div>
-    <label for="data">Data:</label>
-    <input type="text" id="data" formControlName="data" />
+    <mat-form-field appearance="fill">
+      <mat-label>Data:</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="data">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+    </mat-form-field>
   </div>
-  <button type="submit" [disabled]="registroForm.invalid">
+  <button mat-raised-button color="primary" type="submit" [disabled]="registroForm.invalid">
     {{ typeSubmit }}
   </button>
 </form>

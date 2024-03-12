@@ -1,11 +1,27 @@
 {
   "transacoes": [
     {
-      "id": "2025734f-e69d-4adb-8268-4fd7dc9f7a11",
-      "descricao": "Compras do mês",
+      "id": "85823dd7-1a7e-4563-b9f5-84ed05d8101a",
+      "descricao": "compras",
+      "tipoDeRegistro": "saida",
+      "valor": 300,
+      "data": "2024-02-21T03:00:00.000Z",
+      "mes": "fevereiro"
+    },
+    {
+      "id": "47229f5f-fd90-4f39-9bb5-f82c06449175",
+      "descricao": "recebimento aluguel",
       "tipoDeRegistro": "entrada",
-      "valor": 1800,
-      "data": "28-10-2023",
+      "valor": 5000,
+      "data": "2024-01-30T03:00:00.000Z",
+      "mes": "janeiro"
+    },
+    {
+      "id": "27c73162-a05e-409b-aca1-a6c8959889b3",
+      "descricao": "comprinhas",
+      "tipoDeRegistro": "saida",
+      "valor": 500,
+      "data": "2024-03-19T03:00:00.000Z",
       "mes": "março"
     }
   ]

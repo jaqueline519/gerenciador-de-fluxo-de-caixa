@@ -1,23 +1,36 @@
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Descrição</th>
-      <th scope="col">Entrada</th>
-      <th scope="col">Saída</th>
-      <th scope="col">Data</th>
-      <th scope="col">Ações</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let registro of registros">
-      <td>{{ registro.descricao }}</td>
-      <td>{{ registro.tipoDeRegistro === 'entrada' ? registro.valor :  '' | currency: 'BRL'}}</td>
-      <td>{{ registro.tipoDeRegistro === 'saida' ? registro.valor : '' | currency: 'BRL'}}</td>
-      <td>{{ registro.data }}</td>
-      <td>
-        <button (click)="editarRegistro(registro)">Edit</button>
-        <button (click)="deletarRegistro(registro)">Delete</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<mat-table [dataSource]="registros">
+  <ng-container matColumnDef="descricao">
+    <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>
+    <mat-cell *matCellDef="let registro"> {{ registro.descricao }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="entrada">
+    <mat-header-cell *matHeaderCellDef> Entrada </mat-header-cell>
+    <mat-cell *matCellDef="let registro"> {{  (registro.tipoDeRegistro === 'entrada' ? registro.valor : '') | currency: 'BRL'}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="saida">
+    <mat-header-cell *matHeaderCellDef> Saída </mat-header-cell>
+    <mat-cell *matCellDef="let registro"> {{ (registro.tipoDeRegistro === 'saida' ? registro.valor : '') | currency: 'BRL' }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="data">
+    <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
+    <mat-cell *matCellDef="let registro"> {{ registro.data | date: 'dd/MM/yyyy' }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="acoes">
+    <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+    <mat-cell *matCellDef="let registro">
+      <button mat-icon-button (click)="editarRegistro(registro)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="deletarRegistro(registro)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
