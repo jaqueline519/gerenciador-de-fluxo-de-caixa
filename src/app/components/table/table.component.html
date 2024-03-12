@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Descrição</th>
+      <th scope="col">Entrada</th>
+      <th scope="col">Saída</th>
+      <th scope="col">Data</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let registro of registros">
+      <td>{{ registro.descricao }}</td>
+      <td>{{ registro.tipoDeRegistro === 'entrada' ? registro.valor :  '' | currency: 'BRL'}}</td>
+      <td>{{ registro.tipoDeRegistro === 'saida' ? registro.valor : '' | currency: 'BRL'}}</td>
+      <td>{{ registro.data }}</td>
+      <td>
+        <button (click)="editarRegistro(registro)">Edit</button>
+        <button (click)="deletarRegistro(registro)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

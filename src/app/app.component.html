@@ -1,0 +1,6 @@
+<div class="content" role="main">
+  <app-total-registros></app-total-registros>
+  <app-formulario-registros (submitFormEvent)="submitForm($event)" [registro]="registro" [typeSubmit]="typeSubmit" ></app-formulario-registros>
+  <app-table (editRegister)="editRegister($event)"></app-table>
+  <router-outlet></router-outlet>
+</div>

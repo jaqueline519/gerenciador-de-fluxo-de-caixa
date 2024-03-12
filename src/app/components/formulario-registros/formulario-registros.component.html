@@ -1,0 +1,24 @@
+<form [formGroup]="registroForm" (ngSubmit)="submitForm()">
+  <div>
+    <label for="descricao">Descrição:</label>
+    <input type="text" id="descricao" formControlName="descricao" />
+  </div>
+  <div>
+    <label for="entrada">Tipo de Registro:</label>
+    <select id="entrada" formControlName="tipoDeRegistro">
+      <option value="entrada">Entrada</option>
+      <option value="saida">Saida</option>
+    </select>
+  </div>
+  <div>
+    <label for="saida">Valor:</label>
+    <input type="number" id="saida" formControlName="valor" />
+  </div>
+  <div>
+    <label for="data">Data:</label>
+    <input type="text" id="data" formControlName="data" />
+  </div>
+  <button type="submit" [disabled]="registroForm.invalid">
+    {{ typeSubmit }}
+  </button>
+</form>

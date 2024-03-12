@@ -1,0 +1,22 @@
+<div class="toolbar" role="banner">
+    <div class="spacer"></div>
+<table>
+    <thead>
+      <tr>
+        <th scope="col">Mês</th>
+        <th scope="col">Entradas</th>
+        <th scope="col">Saídas</th>
+        <th scope="col">Saldo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ mesRegistros }}</td>
+        <td>{{ totalEntradas | currency: 'BRL'}}</td>
+        <td>{{ totalSaidas | currency: 'BRL'}}</td>
+        <td>{{ totalEntradas - totalSaidas | currency: 'BRL'}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
