@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Registro } from './models/registros.model';
-import { RefreshTableService } from './services/refresh-table.service';
+import { RefreshTableService } from './services/refresh-service/refresh-table.service';
 import { EntradasSaidas } from './types/entradas-saidas.type';
+import { SnackbarService } from './services/snackbar-service/snackbar.service';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +16,10 @@ export class AppComponent {
   title = 'fluxo-de-caixa';
   totalEntradasESaidas: EntradasSaidas = {entradas: 0, saidas: 0}
   
-  constructor(private refreshTableService: RefreshTableService) {
-    
+  constructor(private refreshTableService: RefreshTableService, private snackbarService: SnackbarService) {
+    this.snackbarService.abrirSnackBar('teste snackbar', 'edit');
   }
+    
   editRegister(registro: Registro) {
     this.typeSubmit = 'atualizar'
     this.registro = registro

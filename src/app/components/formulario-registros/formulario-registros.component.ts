@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output, Input, OnChanges, SimpleChange
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Registro } from 'src/app/models/registros.model';
 import { Form } from 'src/app/types/form.type';
-import { RegistrosFinanceirosService } from '../../services/registros-financeiros.service';
+import { RegistrosFinanceirosService } from '../../services/registros-financeiros-service/registros-financeiros.service';
 import { v4 as uuidv4 } from 'uuid';
 import { meses } from 'src/app/dictionary/meses-do-ano.dictionary';
 import { MesesDoAno } from 'src/app/types/meses-do-ano.type';

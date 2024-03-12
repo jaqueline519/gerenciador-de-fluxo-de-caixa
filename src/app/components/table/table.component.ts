@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { RegistrosFinanceirosService } from '../../services/registros-financeiros.service';
+import { RegistrosFinanceirosService } from '../../services/registros-financeiros-service/registros-financeiros.service';
 import { Registro } from '../../models/registros.model';
-import { RefreshTableService } from 'src/app/services/refresh-table.service';
 import { EntradasSaidas } from 'src/app/types/entradas-saidas.type';
+import { RefreshTableService } from 'src/app/services/refresh-service/refresh-table.service';
 
 @Component({
   selector: 'app-table',

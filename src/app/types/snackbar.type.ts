@@ -1,0 +1,1 @@
+export type tipoSnackbar = 'edit' | 'create' | 'delete'

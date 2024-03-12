@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const components = [
   TableComponent,
@@ -28,7 +29,6 @@ const components = [
 @NgModule({
   declarations: [
     AppComponent,
-    TableComponent,
     ...components,
   ],
   imports: [
@@ -47,7 +47,8 @@ const components = [
     MatTableModule,
     MatGridListModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Registro } from '../models/registros.model';
+import { Registro } from '../../models/registros.model';
 import { environment } from 'src/environments/environment';
-import { meses } from '../dictionary/meses-do-ano.dictionary';
-import { MesesDoAno } from '../types/meses-do-ano.type';
+import { meses } from '../../dictionary/meses-do-ano.dictionary';
+import { MesesDoAno } from '../../types/meses-do-ano.type';
 
 @Injectable({
   providedIn: 'root'
