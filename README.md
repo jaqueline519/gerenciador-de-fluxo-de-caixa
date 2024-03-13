@@ -4,9 +4,14 @@ Fico muito feliz em ter você por aqui!
 
 Esta é uma aplicação Angular, desenvolvida na versão 14 do Framework, criado para gerenciar um fluxo de caixa, seja para uso doméstico ou empresarial, nesta versão inicial oferecemos uma lista de categorias da API Open Food Facts, mas é claro,você pode inserir a sua própria descrição e deixar o seu gerenciamento mensal ainda mais claro.
 
-Ah, e também temos a versão mobile, muito prático!
+![Cards](asstes/imges-readme/gerenciador-web.png)
 
-Bom, vamos para parte técnica!
+Ah, e também temos a versão mobile olha só:
+
+![Cards](asstes/imges-readme/versao-mobile.png)
+![Form](asstes/imges-readme/form-mobile.png)
+
+Bom, agora que você já sabe um pouquinho sobre o projeto, vamos para parte técnica!
 
 ## Pré-requisitos de execução local
 
