@@ -5,6 +5,7 @@ import { RefreshListService } from 'src/app/shared/services/refresh-service/refr
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { Registro } from 'src/app/shared/models/registros.model';
+import { SnackbarService } from 'src/app/shared/services/snackbar-service/snackbar.service';
 
 
 @Component({
@@ -23,7 +24,9 @@ export class ListRegisterComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private registrosFinanceirosService: RegistrosFinanceirosService,
-    private refreshListService: RefreshListService) { }
+    private refreshListService: RefreshListService,
+    private snackbar: SnackbarService
+    ) { }
 
 
   ngOnInit(): void {
@@ -35,11 +38,10 @@ export class ListRegisterComponent implements OnInit {
   observaMudancaParaRefresh(){
     this.refreshListService.getRefreshTable().subscribe({
       next: (response) => {
-          console.log( 'response table',response);
           this.buscarRegistrosPorMes(response);
       },
       error: (error) => {
-        console.log(error);
+        this.snackbar.abrirSnackBar('Não foi possível recarregar os dados, por favor atualize a página');
       }
     });
   }
@@ -68,7 +70,8 @@ export class ListRegisterComponent implements OnInit {
         this.registros = response;
       },
       error: (error: Error) => {
-        console.log(error);
+        this.snackbar.abrirSnackBar('Não foi possível recuperar os dados, por favor tente novamente mais tarde');
+
       }
     })
   }
@@ -95,7 +98,8 @@ export class ListRegisterComponent implements OnInit {
         this.registros = response;
       },
       error: (error) => {
-        console.log(error);
+        this.snackbar.abrirSnackBar('Não foi possível recuperar os dados, por favor tente novamente mais tarde');
+
       }
     });
   }
@@ -108,10 +112,10 @@ export class ListRegisterComponent implements OnInit {
     this.registrosFinanceirosService.deletarRegistro(registro).subscribe({
       next: (response) => {
         this.buscarTodosOsRegistros();
-        console.log(response);
+        this.snackbar.abrirSnackBar('Registro deletado.');
       },
       error: (error) => {
-        console.log(error);
+        this.snackbar.abrirSnackBar('Não foi possível deletar o registro, por favor tente novamente.');
       }
     });
   }

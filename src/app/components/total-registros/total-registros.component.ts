@@ -21,7 +21,6 @@ export class TotalRegistrosComponent implements OnInit, AfterViewInit {
   @ViewChild("cardContainer") cardContainer!: ElementRef;
   mesAnoRegistro: string = "";
   displayedColumns: string[] = ["entradas", "saidas", "saldo"];
-  
   openSelectDate = false;
 
   constructor() {}
@@ -36,6 +35,10 @@ export class TotalRegistrosComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.cardContainer.nativeElement.classList.add("slide-down");
     }, 100);
+  }
+
+  retornaSaldo(){
+    return this.totalEntradasEsaidas.entradas - this.totalEntradasEsaidas.saidas
   }
 
 }

@@ -14,7 +14,7 @@ import {
 } from "@angular/material/core";
 import { MatDatepicker } from "@angular/material/datepicker";
 import { RefreshListService } from "src/app/shared/services/refresh-service/refresh-list.service";
-import { meses } from "src/app/shared/dictionary/meses-do-ano.dictionary";
+import { meses } from "src/app/dictionary/meses-do-ano.dictionary";
 
 export const MY_FORMATS = {
   parse: {

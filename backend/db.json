@@ -9,14 +9,6 @@
       "mesAno": "abril/2017"
     },
     {
-      "id": "bec6fc5b-b98a-49b8-8c5c-d017dfd8ea63",
-      "descricao": "pagamentos",
-      "tipoDeRegistro": "saida",
-      "valor": 6000,
-      "data": "2024-02-06T03:00:00.000Z",
-      "mesAno": "fevereiro/2024"
-    },
-    {
       "id": "b234cd00-dfef-45fd-8802-a8854280f8de",
       "descricao": "Recebimento de aluguel",
       "tipoDeRegistro": "entrada",
@@ -25,7 +17,43 @@
       "mesAno": "fevereiro/2024"
     },
     {
-      "id": "017655cc-1502-4b40-b8c3-b4565711b8cb",
+      "id": "b9dd33b8-ddf1-490c-80a0-0f8d3e7c8a62",
+      "descricao": "plano de saúde pet",
+      "tipoDeRegistro": "saida",
+      "valor": 229,
+      "data": "2024-02-13T03:00:00.000Z",
+      "mesAno": "fevereiro/2024"
+    },
+    {
+      "id": "1d6decbf-fff9-4c5b-beef-816f3fe8193a",
+      "mesAno": "undefined/NaN"
+    },
+    {
+      "id": "c05376dd-0726-4aca-8fef-df9f82deee7f",
+      "descricao": "Comida",
+      "tipoDeRegistro": "saida",
+      "valor": 150,
+      "data": "2024-03-27T03:00:00.000Z",
+      "mesAno": "março/2024"
+    },
+    {
+      "id": "3d018b7b-003e-46aa-8288-77285d5e8698",
+      "descricao": "Comida",
+      "tipoDeRegistro": "saida",
+      "valor": 150,
+      "data": "2024-03-27T03:00:00.000Z",
+      "mesAno": "março/2024"
+    },
+    {
+      "id": "0838b470-2ecf-4895-8d1f-a34cf49a50c2",
+      "descricao": "Comida",
+      "tipoDeRegistro": "saida",
+      "valor": 150,
+      "data": "2024-03-27T03:00:00.000Z",
+      "mesAno": "março/2024"
+    },
+    {
+      "id": "0ea5e65f-4687-4997-b61d-a1bef837857b",
       "descricao": "Comida",
       "tipoDeRegistro": "saida",
       "valor": 150,

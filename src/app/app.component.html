@@ -3,15 +3,22 @@
   <app-total-registros 
   [totalEntradasEsaidas]="totalEntradasESaidas"
   (mesRegistroEvent)="mesParaCarregarTabela($event)"></app-total-registros>
-  <div>
-    <p>Filtrar por Período</p>
-    <app-input-date [dataNaformata]="dataNaoFormatada"></app-input-date>
-    <button [disabled]="deveDesabilitarBotao('atualizar')" mat-raised-button (click)="openForm('salvar')">Inserir novo registro</button>
+  <div class="input-date-container">
+    <div class="input-date">
+      <app-input-date [dataNaformata]="dataNaoFormatada"></app-input-date>
+    </div>
+    <button class="btn-add" color="primary" [disabled]="deveDesabilitarBotao('atualizar')" mat-raised-button (click)="openForm('salvar')">
+      <mat-icon>add</mat-icon>
+      Novo Registro
+    </button>
   </div>
   <app-formulario-registros 
   *ngIf="openFormRegistro"
   (submitEventDateNoFormmatter)="emitDateNoFormmatter($event)"
-  (submitEventDateFormmatter)="submitForm($event)" [registro]="registro" [typeSubmit]="typeSubmit" ></app-formulario-registros>
+  (submitEventDateFormmatter)="submitForm($event)" 
+  (closeForm)="closeForm($event)"
+  [registro]="registro" 
+  [typeSubmit]="typeSubmit"></app-formulario-registros>
   <app-list-register
   [disabledButton]="deveDesabilitarBotao('salvar')"
   (emiteTotalEntradasESaidas)="retornaTotalEntradasESaida($event)"

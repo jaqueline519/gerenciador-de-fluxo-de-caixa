@@ -1,11 +1,11 @@
 <form [formGroup]="registroForm" (ngSubmit)="submitForm()">
-  <div>
+  <div class="div-input">
     <mat-form-field appearance="fill">
       <mat-label>Descrição:</mat-label>
       <input matInput type="text" formControlName="descricao">
     </mat-form-field>
   </div>
-  <div>
+  <div class="div-input">
     <mat-form-field appearance="fill">
       <mat-label>Tipo de Registro:</mat-label>
       <mat-select formControlName="tipoDeRegistro">
@@ -14,13 +14,13 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <div>
+  <div class="div-input">
     <mat-form-field appearance="fill">
       <mat-label>Valor:</mat-label>
       <input matInput type="number" formControlName="valor">
     </mat-form-field>
   </div>
-  <div>
+  <div class="div-input">
     <mat-form-field appearance="fill">
       <mat-label>Data:</mat-label>
       <input matInput [matDatepicker]="picker" formControlName="data">
@@ -28,7 +28,12 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   </div>
-  <button mat-raised-button color="primary" type="submit" [disabled]="registroForm.invalid">
-    {{ typeSubmit }}
-  </button>
+  <div class="actions">
+    <button (click)="emitCloseForm()" mat-raised-button color="secondary">
+     cancelar
+    </button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="registroForm.invalid">
+      {{ typeSubmit }}
+    </button>
+  </div>
 </form>

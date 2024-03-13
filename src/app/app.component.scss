@@ -1,0 +1,45 @@
+.input-date-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 20px;
+    gap: 10px;
+    .input-date {
+        display: flex;
+        gap: 2px;
+        justify-content: center;
+        align-items: center;
+        p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(245, 245, 245);
+            height: 52px;
+            margin-top: -5px;
+            width: 52px;
+            box-sizing: border-box;
+            padding: 5px;
+            border-bottom: solid 1px #888888;
+            border-radius: 5px 0 0 5px;
+        }
+    }
+}
+
+.btn-add {
+    align-self: flex-start;
+    height: 52px;
+}
+
+@media (max-width: 445px) {
+    .input-date-container {
+        flex-direction: column;
+    }
+    .btn-add {
+        height: inherit;
+        width: 100%;
+    }
+
+    .input-date {
+        width: 100%;
+    }
+}

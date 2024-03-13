@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Registro } from 'src/app/shared/models/registros.model';
+import { Registro } from 'src/app/models/registros.model';
 
 
 @Component({

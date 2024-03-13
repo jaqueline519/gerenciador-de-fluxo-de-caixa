@@ -7,12 +7,14 @@
   
     <ng-container matColumnDef="entrada">
       <mat-header-cell *matHeaderCellDef> Entrada </mat-header-cell>
-      <mat-cell *matCellDef="let registro"> {{  (registro.tipoDeRegistro === 'entrada' ? registro.valor : '') | currency: 'BRL'}} </mat-cell>
+      <mat-cell *matCellDef="let registro" [ngClass]="'entradas' | registroPipe:  registro.valor"> {{  (registro.tipoDeRegistro === 'entrada' ? registro.valor : '') | currency: 'BRL'}} </mat-cell>
     </ng-container>
   
     <ng-container matColumnDef="saida">
       <mat-header-cell *matHeaderCellDef> Saída </mat-header-cell>
-      <mat-cell *matCellDef="let registro"> {{ (registro.tipoDeRegistro === 'saida' ? registro.valor : '') | currency: 'BRL' }} </mat-cell>
+      <mat-cell *matCellDef="let registro" 
+      [ngClass]="'saidas' | registroPipe:  registro.valor"
+      > {{ (registro.tipoDeRegistro === 'saida' ? - registro.valor : '') | currency: 'BRL' }} </mat-cell>
     </ng-container>
   
     <ng-container matColumnDef="data">
@@ -24,10 +26,10 @@
       <mat-header-cell *matHeaderCellDef class="actions"> Ações </mat-header-cell>
       <mat-cell *matCellDef="let registro" class="actions">
         <button [disabled]="disabledButton" mat-icon-button (click)="editarRegistro(registro)">
-          <mat-icon>edit</mat-icon>
+          <mat-icon class="edit-icon">edit</mat-icon>
         </button>
         <button mat-icon-button (click)="deletarRegistro(registro)">
-          <mat-icon>delete</mat-icon>
+          <mat-icon color="warn">delete</mat-icon>
         </button>
       </mat-cell>
     </ng-container>

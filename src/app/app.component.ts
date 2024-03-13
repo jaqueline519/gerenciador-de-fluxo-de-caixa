@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { EntradasSaidas } from './shared/types/entradas-saidas.type';
 import { SnackbarService } from './shared/services/snackbar-service/snackbar.service';
 import { RefreshListService } from './shared/services/refresh-service/refresh-list.service';
-import { Registro } from './shared/models/registros.model';
+import { Registro } from './models/registros.model';
 
 @Component({
   selector: 'app-root',
@@ -30,7 +30,7 @@ export class AppComponent {
     this.typeSubmit = 'salvar'
     this.registro = {id: ''}
     this.mesParaCarregarTabela(mesAno);
-    this.openFormRegistro = !this.openFormRegistro
+    this.openFormRegistro = false
   }
 
   emitDateNoFormmatter(date: string) {
@@ -47,10 +47,18 @@ export class AppComponent {
 
   openForm(typeSubmit: 'salvar' | 'atualizar') {
     this.typeSubmit = typeSubmit
-    this.openFormRegistro = !this.openFormRegistro
+    this.openFormRegistro = true
   }
 
   deveDesabilitarBotao(typeSubmit: 'salvar' | 'atualizar') {
     return this.typeSubmit === typeSubmit && this.openFormRegistro
   }
+
+  closeForm(event: boolean) {
+    console.log(event)
+    if (event) {
+      this.openFormRegistro = false;
+    }
+  }
+  
 }

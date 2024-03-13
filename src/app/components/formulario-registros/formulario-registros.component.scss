@@ -1,25 +1,38 @@
 form {
-    display: flex;
-    gap : 10px;
-    margin: 0 20px;
-    align-items: center;
-    flex-wrap: wrap;
-    div {
-        flex: 1;
-        border-radius: 10px;
-        mat-form-field {
-            width: 100%;
-        }
+  display: flex;
+  gap: 10px;
+  margin: 0 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  .div-input {
+    flex: 1;
+    border-radius: 10px;
+    mat-form-field {
+      width: 100%;
     }
-    button {
-        align-self: flex-start;
-        height: 54px;
-    }
-   
+  }
+  button {
+    align-self: flex-start;
+    height: 50px;
+  }
 }
 
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
 @media (max-width: 800px) {
-    form {
-        flex-wrap: wrap;
-    }
+  form {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 500px) {
+  .actions {
+    margin-bottom: 10px;
+    width: 100%;
+  }
 }

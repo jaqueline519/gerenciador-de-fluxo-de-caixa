@@ -1,0 +1,48 @@
+<div class="cards-container">
+  <mat-card *ngFor="let registro of registros" class="card">
+    <div class="card-header">
+      <mat-card-title class="card-title">{{
+        registro.descricao
+      }}</mat-card-title>
+      <div class="card-actions">
+        <button
+          mat-raised-button
+          class="btn-add"
+          color="primary"
+          [disabled]="disabledButton"
+          (click)="editarRegistro(registro)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-raised-button
+          class="btn-add"
+          color="warn"
+          (click)="deletarRegistro(registro)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    <mat-card-content class="card-content">
+      <div>
+        <mat-card-subtitle class="mat-card-subtitle"
+        >Data: {{ registro.data | date : "dd/MM/yyyy" }}
+      </mat-card-subtitle>
+      <p *ngIf="registro.tipoDeRegistro === 'entrada'"
+      [ngClass]="'entradas' | registroPipe:  registro.valor || 0"
+      >
+        Entrada: {{ registro.valor | currency : "BRL" }}
+      </p>
+      <p *ngIf="registro.tipoDeRegistro === 'saida'"
+      [ngClass]="'saidas' | registroPipe:  registro.valor || 0"
+      >
+        Saída: - {{ registro.valor | currency : "BRL" }}
+      </p>
+     
+      </div>
+      
+      
+    </mat-card-content>
+  </mat-card>
+</div>

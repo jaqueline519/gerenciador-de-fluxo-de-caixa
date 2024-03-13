@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from "@angular/material/snack-bar";
-import { tipoSnackbar } from "src/app/shared/types/snackbar.type";
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +14,8 @@ export class SnackbarService {
 
   }
 
-  abrirSnackBar(valueSnackBar: string, tipoDeAcao: tipoSnackbar) {
-    this.snackBar.open(`successfully ${tipoDeAcao}: ${valueSnackBar}`, 'ok', {
+  abrirSnackBar(valueSnackBar: string) {
+    this.snackBar.open(valueSnackBar, 'ok', {
       horizontalPosition: this.posicaoHorizontal,
       verticalPosition: this.posicaoVertical,
     });

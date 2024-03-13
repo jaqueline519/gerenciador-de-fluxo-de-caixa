@@ -23,8 +23,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { InputDateComponent } from './components/input-date/input-date.component';
-import { CardsMobileComponent } from './components/cards-mobile/cards-mobile.component';
-import { TableComponent } from './components/table-web/table.component';
+import { CardsMobileComponent } from './shared/components/cards-mobile/cards-mobile.component';
+import { TableComponent } from './shared/components/table-web/table.component';
+import { RegistroPipe } from './shared/pipes/registro.pipe';
+
 
 const components = [
   ListRegisterComponent,
@@ -33,7 +35,8 @@ const components = [
   HeaderComponent,
   InputDateComponent,
   CardsMobileComponent,
-  TableComponent
+  TableComponent,
+  RegistroPipe
 ]
 @NgModule({
   declarations: [

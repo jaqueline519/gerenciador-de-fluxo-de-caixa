@@ -5,7 +5,8 @@ import { RegistrosFinanceirosService } from '../../shared/services/registros-fin
 import { v4 as uuidv4 } from 'uuid';
 import { MesesDoAno } from 'src/app/shared/types/meses-do-ano.type';
 import { Registro } from 'src/app/shared/models/registros.model';
-import { meses } from 'src/app/shared/dictionary/meses-do-ano.dictionary';
+import { meses } from 'src/app/dictionary/meses-do-ano.dictionary';
+import { SnackbarService } from 'src/app/shared/services/snackbar-service/snackbar.service';
 
 
 @Component({
@@ -20,7 +21,12 @@ export class FormularioRegistrosComponent implements OnInit, OnChanges {
   @Input() typeSubmit: Form = 'salvar';
   @Output() submitEventDateFormmatter = new EventEmitter<string>();
   @Output() submitEventDateNoFormmatter = new EventEmitter<string>();
-  constructor(private formBuilder: FormBuilder, private registrosFinanceirosService: RegistrosFinanceirosService) { }
+  @Output() closeForm = new EventEmitter<boolean>();
+  constructor(
+    private formBuilder: FormBuilder, 
+    private registrosFinanceirosService: RegistrosFinanceirosService,
+    private snackbar: SnackbarService
+    ) { }
 
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -74,13 +80,13 @@ export class FormularioRegistrosComponent implements OnInit, OnChanges {
   }
 
   salvar() {
-
     this.registrosFinanceirosService.adicionarRegistro(this.retornaRegistroParaSalvar()).subscribe({
       next: () => {
+        this.snackbar.abrirSnackBar('Registro criado com sucesso');
       this.registroForm.reset();
       },
       error: (error) => {
-        // TODO: implementar toast de erro
+        this.snackbar.abrirSnackBar('Erro ao criar o registro');
       }
     })
   }
@@ -99,11 +105,18 @@ export class FormularioRegistrosComponent implements OnInit, OnChanges {
     this.registrosFinanceirosService.atualizarRegistro(this.retornaRegistroParaSalvar()).subscribe({
       next: (response) => {
       this.registroForm.reset();
-        
+      this.snackbar.abrirSnackBar('Registro atualizado com sucesso');
       },
       error: (error) => {
-        // TODO: implementar toast de erro
+        this.snackbar.abrirSnackBar('Erro ao criar o registro');
       }
     })
   }
+
+  async emitCloseForm() {
+    await this.registroForm.reset();
+    this.registro = {id: ''};
+    this.closeForm.emit(true);
+  }
+  
 }
