@@ -30,7 +30,7 @@
     },
     {
       "id": "c05376dd-0726-4aca-8fef-df9f82deee7f",
-      "descricao": "Comida",
+      "descricao": " Plant-based foods",
       "tipoDeRegistro": "saida",
       "valor": 150,
       "data": "2024-03-27T03:00:00.000Z",
@@ -58,6 +58,18 @@
       "tipoDeRegistro": "saida",
       "valor": 150,
       "data": "2024-03-27T03:00:00.000Z",
+      "mesAno": "março/2024"
+    },
+    {
+      "id": "d04cd5de-432e-46b1-8a84-184d4f97b650",
+      "mesAno": "undefined/NaN"
+    },
+    {
+      "id": "c688640b-eb6c-459a-a2ea-b57a7c3b9ca9",
+      "descricao": "Plant-based foods and beverages",
+      "tipoDeRegistro": "saida",
+      "valor": 3000,
+      "data": "2024-03-13T03:00:00.000Z",
       "mesAno": "março/2024"
     }
   ]

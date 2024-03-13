@@ -2,9 +2,25 @@
   <div class="div-input">
     <mat-form-field appearance="fill">
       <mat-label>Descrição:</mat-label>
-      <input matInput type="text" formControlName="descricao">
+      <input
+        (focus)="buscaCategorias()"
+        formControlName="descricao"
+        type="text"
+        matInput
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let categoria of categorias"
+          [value]="categoria"
+          (click)="selectCategoria(categoria)"
+        >
+          {{ categoria }}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
   </div>
+
   <div class="div-input">
     <mat-form-field appearance="fill">
       <mat-label>Tipo de Registro:</mat-label>
@@ -17,22 +33,27 @@
   <div class="div-input">
     <mat-form-field appearance="fill">
       <mat-label>Valor:</mat-label>
-      <input matInput type="number" formControlName="valor">
+      <input matInput type="number" formControlName="valor" />
     </mat-form-field>
   </div>
   <div class="div-input">
     <mat-form-field appearance="fill">
       <mat-label>Data:</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="data">
+      <input matInput [matDatepicker]="picker" formControlName="data" />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   </div>
   <div class="actions">
     <button (click)="emitCloseForm()" mat-raised-button color="secondary">
-     cancelar
+      cancelar
     </button>
-    <button mat-raised-button color="primary" type="submit" [disabled]="registroForm.invalid">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="registroForm.invalid"
+    >
       {{ typeSubmit }}
     </button>
   </div>

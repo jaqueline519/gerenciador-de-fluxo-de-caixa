@@ -26,7 +26,7 @@ import { InputDateComponent } from './components/input-date/input-date.component
 import { CardsMobileComponent } from './shared/components/cards-mobile/cards-mobile.component';
 import { TableComponent } from './shared/components/table-web/table.component';
 import { RegistroPipe } from './shared/pipes/registro.pipe';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 const components = [
   ListRegisterComponent,
@@ -63,6 +63,7 @@ const components = [
     MatSnackBarModule,
     MatToolbarModule,
     MatDialogModule,
+    MatAutocompleteModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }
