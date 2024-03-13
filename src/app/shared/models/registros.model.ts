@@ -1,4 +1,3 @@
-import { MesesDoAno } from "../types/meses-do-ano.type";
 
 export interface Registro {
     id: string;

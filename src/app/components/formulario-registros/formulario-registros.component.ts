@@ -1,11 +1,11 @@
 import { Component, EventEmitter, OnInit, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Registro } from 'src/app/models/registros.model';
-import { Form } from 'src/app/types/form.type';
-import { RegistrosFinanceirosService } from '../../services/registros-financeiros-service/registros-financeiros.service';
+import { Form } from 'src/app/shared/types/form.type';
+import { RegistrosFinanceirosService } from '../../shared/services/registros-financeiros-service/registros-financeiros.service';
 import { v4 as uuidv4 } from 'uuid';
-import { meses } from 'src/app/dictionary/meses-do-ano.dictionary';
-import { MesesDoAno } from 'src/app/types/meses-do-ano.type';
+import { MesesDoAno } from 'src/app/shared/types/meses-do-ano.type';
+import { Registro } from 'src/app/shared/models/registros.model';
+import { meses } from 'src/app/shared/dictionary/meses-do-ano.dictionary';
 
 
 @Component({
@@ -18,7 +18,8 @@ export class FormularioRegistrosComponent implements OnInit, OnChanges {
   registroForm: FormGroup = new FormGroup({});
   @Input() registro: Registro = {id: ''};
   @Input() typeSubmit: Form = 'salvar';
-  @Output() submitFormEvent = new EventEmitter<string>();
+  @Output() submitEventDateFormmatter = new EventEmitter<string>();
+  @Output() submitEventDateNoFormmatter = new EventEmitter<string>();
   constructor(private formBuilder: FormBuilder, private registrosFinanceirosService: RegistrosFinanceirosService) { }
 
 
@@ -68,8 +69,8 @@ export class FormularioRegistrosComponent implements OnInit, OnChanges {
     } else {
       this.atualizar();
     }
-
-    this.submitFormEvent.emit(this.extrairMesAno(this.registroForm.get('data')?.value));
+    this.submitEventDateNoFormmatter.emit(this.registroForm.get('data')?.value);
+    this.submitEventDateFormmatter.emit(this.extrairMesAno(this.registroForm.get('data')?.value));
   }
 
   salvar() {

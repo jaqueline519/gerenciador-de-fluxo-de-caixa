@@ -1,54 +1,43 @@
-<div class="card-container" #cardContainer>
-  <div class="card card-month">
-    <mat-card>
-      <mat-card-header class="card-content">
-        <mat-card-title class="card-title">
-          <mat-icon>calendar_month</mat-icon>
-          Mês
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="card-content">
-        {{ mesAnoRegistro }}
-      </mat-card-content>
-    </mat-card>
+
+  <div class="card-container" #cardContainer>
+    <div class="card card-ent">
+      <mat-card>
+        <mat-card-header class="card-content">
+          <mat-card-title class="card-title">
+            <mat-icon>attach_money</mat-icon>
+            Entradas
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="card-content">
+          <p class="entryies">{{ totalEntradasEsaidas.entradas| currency : "BRL" }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="card card-out">
+      <mat-card>
+        <mat-card-header class="card-content">
+          <mat-card-title class="card-title">
+            <mat-icon>money_off</mat-icon>
+            Saídas
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="card-content">
+          <p class="money-off">{{ totalEntradasEsaidas.saidas| currency : "BRL" }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="card card-balance">
+      <mat-card>
+        <mat-card-header class="card-content">
+          <mat-card-title class="card-title">
+            <mat-icon>account_balance_wallet</mat-icon>
+            Saldo
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="card-content">
+          <p class="money">{{totalEntradasEsaidas.entradas - totalEntradasEsaidas.saidas | currency : "BRL" }}</p> 
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
-  <div class="card card-ent">
-    <mat-card>
-      <mat-card-header class="card-content">
-        <mat-card-title class="card-title">
-          <mat-icon>attach_money</mat-icon>
-          Entradas
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="card-content">
-        <p class="entryies">{{ totalEntradasEsaidas.entradas| currency : "BRL" }}</p>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="card card-out">
-    <mat-card>
-      <mat-card-header class="card-content">
-        <mat-card-title class="card-title">
-          <mat-icon>money_off</mat-icon>
-          Saídas
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="card-content">
-        <p class="money-off">{{ totalEntradasEsaidas.saidas| currency : "BRL" }}</p>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="card card-balance">
-    <mat-card>
-      <mat-card-header class="card-content">
-        <mat-card-title class="card-title">
-          <mat-icon>account_balance_wallet</mat-icon>
-          Saldo
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="card-content">
-        <p class="money">{{totalEntradasEsaidas.entradas - totalEntradasEsaidas.saidas | currency : "BRL" }}</p> 
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
+

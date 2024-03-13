@@ -16,9 +16,25 @@
       text-align: left;
       border-bottom: 1px solid #ccc;
     }
-
-        
 }
+
+// :host ::ng-deep .table-container {
+//   overflow-x: auto;
+//   padding: 0 20px;
+// }
+
+// :host ::ng-deep mat-table {
+//   margin: 10px 0;
+//   width: 100%;
+//   min-width: 300px;
+// }
+
+// :host ::ng-deep th,
+// :host ::ng-deep td {
+//   white-space: nowrap;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+// }
 
 @media (max-width: 800px) {
     .table-container {

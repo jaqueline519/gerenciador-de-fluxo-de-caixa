@@ -1,4 +1,4 @@
-<div>
+<div class="table-container">
   <mat-table [dataSource]="registros">
     <ng-container matColumnDef="descricao">
       <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>
@@ -23,7 +23,7 @@
     <ng-container matColumnDef="acoes">
       <mat-header-cell *matHeaderCellDef class="actions"> Ações </mat-header-cell>
       <mat-cell *matCellDef="let registro" class="actions">
-        <button mat-icon-button (click)="editarRegistro(registro)">
+        <button [disabled]="disabledButton" mat-icon-button (click)="editarRegistro(registro)">
           <mat-icon>edit</mat-icon>
         </button>
         <button mat-icon-button (click)="deletarRegistro(registro)">
@@ -36,4 +36,3 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 </div>
-

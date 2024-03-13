@@ -1,0 +1,15 @@
+<app-cards-mobile 
+*ngIf="isMobile"
+[registros]="registros" 
+[disabledButton]="disabledButton" 
+(editEvent)="editarRegistro($event)"
+(deletEvent)="deletarRegistro($event)"
+></app-cards-mobile>
+
+<app-table 
+*ngIf="!isMobile"
+[registros]="registros" 
+[disabledButton]="disabledButton" 
+(editEvent)="editarRegistro($event)"
+(deletEvent)="deletarRegistro($event)"
+></app-table>

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Registro } from './models/registros.model';
-import { RefreshTableService } from './services/refresh-service/refresh-table.service';
-import { EntradasSaidas } from './types/entradas-saidas.type';
-import { SnackbarService } from './services/snackbar-service/snackbar.service';
+import { EntradasSaidas } from './shared/types/entradas-saidas.type';
+import { SnackbarService } from './shared/services/snackbar-service/snackbar.service';
+import { RefreshListService } from './shared/services/refresh-service/refresh-list.service';
+import { Registro } from './shared/models/registros.model';
 
 @Component({
   selector: 'app-root',
@@ -15,12 +15,14 @@ export class AppComponent {
   typeSubmit: 'salvar' | 'atualizar' = 'salvar'
   title = 'fluxo-de-caixa';
   totalEntradasESaidas: EntradasSaidas = {entradas: 0, saidas: 0}
+  dataNaoFormatada: string = '';
+  openFormRegistro = false;
   
-  constructor(private refreshTableService: RefreshTableService, private snackbarService: SnackbarService) {
+  constructor(private refreshListService: RefreshListService, private snackbarService: SnackbarService) {
   }
     
   editRegister(registro: Registro) {
-    this.typeSubmit = 'atualizar'
+    this.openForm('atualizar')
     this.registro = registro
   }
 
@@ -28,13 +30,27 @@ export class AppComponent {
     this.typeSubmit = 'salvar'
     this.registro = {id: ''}
     this.mesParaCarregarTabela(mesAno);
+    this.openFormRegistro = !this.openFormRegistro
+  }
+
+  emitDateNoFormmatter(date: string) {
+    this.dataNaoFormatada = date;
   }
 
   mesParaCarregarTabela(mesAno: string) {
-    this.refreshTableService.emitRefreshTable(mesAno);
+    this.refreshListService.emitRefreshTable(mesAno);
   }
 
   retornaTotalEntradasESaida(entradasESaidas: EntradasSaidas) {
     this.totalEntradasESaidas = entradasESaidas
+  }
+
+  openForm(typeSubmit: 'salvar' | 'atualizar') {
+    this.typeSubmit = typeSubmit
+    this.openFormRegistro = !this.openFormRegistro
+  }
+
+  deveDesabilitarBotao(typeSubmit: 'salvar' | 'atualizar') {
+    return this.typeSubmit === typeSubmit && this.openFormRegistro
   }
 }

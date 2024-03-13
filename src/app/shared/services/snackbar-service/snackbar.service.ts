@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from "@angular/material/snack-bar";
-import { tipoSnackbar } from "src/app/types/snackbar.type";
+import { tipoSnackbar } from "src/app/shared/types/snackbar.type";
 
 @Injectable({
   providedIn: 'root'

@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class RefreshTableService {
+export class RefreshListService {
 
   refreshTable$: BehaviorSubject<string> = new BehaviorSubject<string>('janeiro/2024');
   constructor() { }
@@ -14,8 +14,8 @@ export class RefreshTableService {
   }
 
 
-  emitRefreshTable(mes: string) {
-    this.refreshTable$.next(mes);
+  emitRefreshTable(mesAno: string) {
+    this.refreshTable$.next(mesAno);
   }
 
 }

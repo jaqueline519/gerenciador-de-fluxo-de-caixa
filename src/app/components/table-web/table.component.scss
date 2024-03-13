@@ -1,0 +1,54 @@
+:host ::ng-deep mat-table{
+    margin: 0 20px;
+    max-width: 100%;
+    margin: 10px;
+    min-width: 800px;
+
+    th {
+      background-color: #f0f0f0;
+      font-weight: bold;
+      padding: 10px;
+      text-align: left;
+    }
+
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+}
+
+// :host ::ng-deep .table-container {
+//   overflow-x: auto;
+//   padding: 0 20px;
+// }
+
+// :host ::ng-deep mat-table {
+//   margin: 10px 0;
+//   width: 100%;
+//   min-width: 300px;
+// }
+
+// :host ::ng-deep th,
+// :host ::ng-deep td {
+//   white-space: nowrap;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+// }
+
+@media (max-width: 800px) {
+    .table-container {
+        overflow-x: scroll;
+    }
+}
+
+@media (max-width: 400px) {
+    * {
+        font-size: 11px;
+      }
+}
+
+.mat-header-cell.actions, .mat-cell.actions {
+    justify-content: center;
+}
+

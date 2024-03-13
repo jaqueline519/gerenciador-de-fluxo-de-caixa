@@ -1,27 +1,39 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { RegistrosFinanceirosService } from '../../services/registros-financeiros-service/registros-financeiros.service';
-import { Registro } from '../../models/registros.model';
-import { EntradasSaidas } from 'src/app/types/entradas-saidas.type';
-import { RefreshTableService } from 'src/app/services/refresh-service/refresh-table.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { RegistrosFinanceirosService } from '../../shared/services/registros-financeiros-service/registros-financeiros.service';
+import { EntradasSaidas } from 'src/app/shared/types/entradas-saidas.type';
+import { RefreshListService } from 'src/app/shared/services/refresh-service/refresh-list.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map } from 'rxjs/operators';
+import { Registro } from 'src/app/shared/models/registros.model';
+
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  selector: 'app-list-register',
+  templateUrl: './list-register.component.html',
+  styleUrls: ['./list-register.component.scss']
 })
-export class TableComponent implements OnInit {
+export class ListRegisterComponent implements OnInit {
   
+  @Input() disabledButton: boolean = false;
   @Output() editRegister: EventEmitter<Registro> = new EventEmitter();
   @Output() emiteTotalEntradasESaidas: EventEmitter<EntradasSaidas> = new EventEmitter();
   registros: Registro[] = [];
-  displayedColumns: string[] = ['descricao', 'entrada', 'saida', 'data', 'acoes'];
-  constructor(private registrosFinanceirosService: RegistrosFinanceirosService,
-    private refreshTableService: RefreshTableService) { }
+  isMobile = false;
+
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private registrosFinanceirosService: RegistrosFinanceirosService,
+    private refreshListService: RefreshListService) { }
 
 
   ngOnInit(): void {
     this.buscarTodosOsRegistros();
-    this.refreshTableService.getRefreshTable().subscribe({
+    this.observaMudancaParaRefresh();
+    this.observaMudancatamanhoTela();
+  }
+
+  observaMudancaParaRefresh(){
+    this.refreshListService.getRefreshTable().subscribe({
       next: (response) => {
           console.log( 'response table',response);
           this.buscarRegistrosPorMes(response);
@@ -31,6 +43,16 @@ export class TableComponent implements OnInit {
       }
     });
   }
+
+  observaMudancatamanhoTela(){
+    this.breakpointObserver.observe([Breakpoints.Handset])
+    .pipe(
+      map(result => result.matches)
+    )
+    .subscribe(matches => {
+      this.isMobile = matches;
+    });
+}
 
   buscarRegistrosPorMes(mesAno: string) {
     this.registrosFinanceirosService.buscarTodosOsRegistrosDoMesNoAno(mesAno).subscribe({
@@ -79,9 +101,7 @@ export class TableComponent implements OnInit {
   }
 
   editarRegistro(registro: Registro) {
-    // TODO: Implementar a edição e formulário
     this.editRegister.emit(registro);
-    console.log(registro);
   }
 
   deletarRegistro(registro: Registro) {

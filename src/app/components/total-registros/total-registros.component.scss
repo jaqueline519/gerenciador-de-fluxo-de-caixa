@@ -1,9 +1,9 @@
 .card-container {
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
-  margin: 30px 0;
+  margin: 30px 10px;
   justify-content: space-evenly;
   transform: translateY(-150px);
   transition: opacity 1s ease, transform 1s ease;
@@ -26,10 +26,6 @@
   border-left: solid 4px #0de81d;
 }
 
-.card-month {
-  border-left: solid 4px #e7d319;
-  border-radius: 4px;
-}
 
 .card-content {
   display: flex;
@@ -44,6 +40,9 @@
   align-items: center;
 }
 
+.mouse {
+  cursor: pointer;
+}
 
 .slide-down {
   transform: translateY(0);
@@ -53,7 +52,11 @@
   .card {
     width: 100%;
   }
-  .card-container {
+}
+
+@media (max-width: 600px) {
+  .card-container{
+    flex-wrap: wrap;
     margin: 30px 20px;
   }
 }
