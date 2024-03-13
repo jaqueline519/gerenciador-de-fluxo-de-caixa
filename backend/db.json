@@ -25,51 +25,11 @@
       "mesAno": "fevereiro/2024"
     },
     {
-      "id": "1d6decbf-fff9-4c5b-beef-816f3fe8193a",
-      "mesAno": "undefined/NaN"
-    },
-    {
-      "id": "c05376dd-0726-4aca-8fef-df9f82deee7f",
-      "descricao": " Plant-based foods",
-      "tipoDeRegistro": "saida",
-      "valor": 150,
-      "data": "2024-03-27T03:00:00.000Z",
-      "mesAno": "março/2024"
-    },
-    {
       "id": "3d018b7b-003e-46aa-8288-77285d5e8698",
-      "descricao": "Comida",
+      "descricao": "Mercado",
       "tipoDeRegistro": "saida",
       "valor": 150,
       "data": "2024-03-27T03:00:00.000Z",
-      "mesAno": "março/2024"
-    },
-    {
-      "id": "0838b470-2ecf-4895-8d1f-a34cf49a50c2",
-      "descricao": "Comida",
-      "tipoDeRegistro": "saida",
-      "valor": 150,
-      "data": "2024-03-27T03:00:00.000Z",
-      "mesAno": "março/2024"
-    },
-    {
-      "id": "0ea5e65f-4687-4997-b61d-a1bef837857b",
-      "descricao": "Comida",
-      "tipoDeRegistro": "saida",
-      "valor": 150,
-      "data": "2024-03-27T03:00:00.000Z",
-      "mesAno": "março/2024"
-    },
-    {
-      "id": "d04cd5de-432e-46b1-8a84-184d4f97b650",
-      "mesAno": "undefined/NaN"
-    },
-    {
-      "id": "c688640b-eb6c-459a-a2ea-b57a7c3b9ca9",
-      "descricao": "Plant-based foods and beverages",
-      "tipoDeRegistro": "saida",
-      "valor": 3000,
-      "data": "2024-03-13T03:00:00.000Z",
       "mesAno": "março/2024"
     }
   ]
