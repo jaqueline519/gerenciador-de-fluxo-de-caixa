@@ -1,27 +1,54 @@
-# FluxoDeCaixa
+# Bem-vindo ao Gerenciador de Fluxo de Caixa! 🌟
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
+Fico muito feliz em ter você por aqui!
 
-## Development server
+Esta é uma aplicação Angular, desenvolvida na versão 14 do Framework, criado para gerenciar um fluxo de caixa, seja para uso doméstico ou empresarial, nesta versão inicial oferecemos uma lista de categorias da API Open Food Facts, mas é claro,você pode inserir a sua própria descrição e deixar o seu gerenciamento mensal ainda mais claro.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Ah, e também temos a versão mobile, muito prático!
 
-## Code scaffolding
+Bom, vamos para parte técnica!
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Pré-requisitos de execução local
 
-## Build
+Certifique-se de ter as seguintes instalações globais em seu ambiente para prosseguir:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [Node.js](https://nodejs.org/) (versão 14.15.0 à 16,10.0)
+- [npm](https://www.npmjs.com/) (normalmente instalado juntamente com o Node.js)
+- [Angular CLI](https://angular.io/cli) (versão 14.2.0)
 
-## Running unit tests
+## Instalação
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clone este repositório para o seu ambiente local:
 
-## Running end-to-end tests
+    ```bash
+    git clone https://github.com/jaqueline519/gerenciador-de-fluxo-de-caixa.git
+    ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. Instale as dependências do projeto usando o npm:
 
-## Further help
+    ```bash
+    npm install
+    ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Execução e Visualização no Browser
+
+Depois de instalar as dependências, você pode iniciar o servidor de desenvolvimento usando o seguinte comando:
+
+- No bash ou prompt de comando, na pasta raiz do projeto, certifique-se de não estar utilizando a porta 4200 e 3000(não deve existir outro servidor local ativo em http://localhost:4200/ nem mesmo em http://localhost:3000/):
+
+    ```bash
+    npm run start:both
+    ```
+
+    Este comando iniciará o servidor de desenvolvimento local, neste projetos estamos utilizando um mock criado com json server, então vamos executar nosso backend fake e nosso frontend.
+    No browser acesse [http://localhost:4200/](http://localhost:4200/).
+
+## Testes Unitários
+
+- **Execução: **
+
+    ```bash
+    npm test
+    ```
+## Muito obrigada pela sua visita!
+
